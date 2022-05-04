@@ -1,0 +1,49 @@
+Shop Manager:
+-Here you can choose which page to start
+-Press on the dial and move it to position then click on the button to start the app
+
+Item Creator:
+-Here you create/delete/edit items to your store
+-Enter the name and price in coresspondant places and press create Items to create
+-Double click an item to select it
+-After selection you can delete it by pressing the delete button or edit the price by entering new price in (Item Price) and pressing Create Item
+
+Inventory Manger:
+-Here you can modify extra value to better you manage your store
+-You can search for an item using the search bar above, select if you want to search by ID or Name in Type
+-Select an item and press edit button in top corner or double click it to edit the values
+-In editor you can set The Purshase Price and number of units left in your store to calculate your profits. You can also modify the sale price here
+-In editor you can change Pricing method, LBP meens the sell price doesn't change when dollar rate does, while USD pricing does
+-Below you can see extra values like Profit per Item Sale, Profit for selling all remaining Items, and total value of all units left os this items
+-You can use the Refresh button if you added new items in the Item Creator window and want to see them now
+-Below is Total Value which shows the Value of all items in your store, and Total Profit Which Shows the profit if you sell all your items
+-Dollar Rate is initially 0, First Time you change the Rate It will be set an inital price and nothing will change, when you edit this value again all items priced in usd will change with respect to the values change
+-If you make an error with dollar rate changing you can always edit the values manually to fix it
+
+Search and Sell Page:
+-Here is the main working space, you can search for items and get there prices or sell them
+Search:
+-You can search for an item using the search bar above, select if you want to search by ID or Name in Type
+-You can use the Refresh button if you added new items in the Item Creator window and want to see them now
+-Double click an Item to add To The Customers Basket
+-The number beside the basket shows the number of items in it
+-Press Clear Basket to empty all items and start with new customer
+-To go to Sell Page press on the basket
+Sell:
+-Here you can also search for purshased items
+-The table shows the anount purshased which is how many items is purshased
+-To take away an item select it by pressing then click take out, if more than one exists the amount wil be reduced else it will be deleted
+-Bellow there is total: which is how much customer have to pay
+-Press Purshase button to clear the basket and confirm purshase. When purshased the amount purshased will be taken out from units left in Inventory Manager
+
+Backup:
+-Here you can make a backup to your data incase of an error
+-Press Select Directory to select where Item is saved in first one, and where to load from in second one
+-Press Create Backup to save a copy of all current Items. If an old backup exists the new one will replace it, to avoid this change the name of the old copy or save in different file
+-Press Load Backup to load an old dataBase. Make sure the name of the loaded data is "store_items"
+
+Stuff To Get:
+-Here you can create a list of items to get so you don't forget when visiting the provider
+-In The empty field above enter the item name and details you want (how much to get etc...)
+-Press add items to list to add an item, press on an item the on delete from list to take out one, press on clear list to delete all text
+-Press save button to save all your changes
