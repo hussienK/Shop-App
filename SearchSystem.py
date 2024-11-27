@@ -20,7 +20,7 @@ def Create_table():
     #create the table
     cursor.execute(""" CREATE TABLE IF NOT EXISTS
     items
-    (id INTEGER PRIMARY KEY AUTOINCREMENT, ItemName TEXT NOT NULL , Price TEXT NOT NULL, PurchasePrice TEXT, UnitsLeft TEXT, Pricing TEXT)""")
+    (id TEXT, ItemName TEXT NOT NULL , Price TEXT NOT NULL, PurchasePrice TEXT, UnitsLeft TEXT, Pricing TEXT)""")
     #End connection
     cursor.close()
 
@@ -68,14 +68,14 @@ class Search(QMainWindow):
 
     def AddToModelList(self, row):
         #Check if Item already exist, then create if not
-        if not row[0] in items_id:
+        if not row[1] in items_name:
             #add each item to a list
             items_name.append(row[1])
             items_id.append(row[0])
             items_price.append(row[2])
         else:
             #get the placement of item in the database
-            m = items_id.index(row[0])
+            m = name.index(row[0])
             #update the list if item already exists
             items_name[m] = row[1]
             items_id[m] = row[0]

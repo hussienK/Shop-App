@@ -29,7 +29,7 @@ def Create_table():
     #create the table
     cursor.execute(""" CREATE TABLE IF NOT EXISTS
     items
-    (id INTEGER PRIMARY KEY AUTOINCREMENT, ItemName TEXT NOT NULL , Price TEXT NOT NULL, PurchasePrice TEXT, UnitsLeft TEXT, Pricing TEXT)""")
+    (id TEXT, ItemName TEXT NOT NULL , Price TEXT NOT NULL, PurchasePrice TEXT, UnitsLeft TEXT, Pricing TEXT)""")
     #End connection
     cursor.close()
 
@@ -91,7 +91,7 @@ class EditSearch(QMainWindow):
 
     def AddToModelList(self, row):
         #Check if Item already exist, then create if not
-        if not row[0] in items_id:
+        if not row[1] in items_name:
             #add each item to a list
             items_name.append(row[1])
             items_id.append(row[0])
@@ -185,7 +185,7 @@ class EditSearch(QMainWindow):
             #get selected row
             selected = items[row]
             #set the name
-            self.Editor = ItemEditor(selected[1], selected[3], selected[2],selected[4], selected[5], self)
+            self.Editor = ItemEditor(selected[1], selected[0], selected[3], selected[2],selected[4], selected[5], self)
         else:
             return
 
@@ -286,13 +286,14 @@ class EditSearch(QMainWindow):
 
         
 class ItemEditor(QMainWindow):
-    def __init__(self, name, pPrice, sPrice, unitsLeft, pricing_method, searchpage):
+    def __init__(self, name,idNum, pPrice, sPrice, unitsLeft, pricing_method, searchpage):
         super(ItemEditor,self).__init__()
 
         uic.loadUi("Resources/UI/ItemEditorFull.ui", self)
 
          #Creating The Edit Menu
         self.item_name = self.findChild(QLineEdit, "name_lineEdit")
+        self.id = self.findChild(QLineEdit, "ID_lineEdit")
         self.purshase_price = self.findChild(QLineEdit, "pPrice_lineEdit")
         self.sell_price = self.findChild(QLineEdit, "sPrice_lineEdit")
         self.pricing_method = self.findChild(QComboBox, "PricingSelector")
@@ -314,6 +315,7 @@ class ItemEditor(QMainWindow):
         self.purshase_price.setText(str(format(int(pPrice),',d')))
         self.sell_price.setText(str(format(int(sPrice),',d')))
         self.unitsLeft.setText(str(unitsLeft))
+        self.id.setText(str(idNum))
         #set pricing method in UI
         if pricing_method == "usd":
             self.pricing_method.setCurrentIndex(1)
@@ -361,9 +363,10 @@ class ItemEditor(QMainWindow):
         else:
             pricing = "usd"
         n = self.item_name.text()
+        i = self.id.text()
         #Update the database
         command1 = f"""UPDATE items
-                        SET price = '{sp}', PurchasePrice = '{pp}', UnitsLeft = '{ul}', Pricing = '{pricing}'
+                        SET price = '{sp}', PurchasePrice = '{pp}', id ='{i}', UnitsLeft = '{ul}', Pricing = '{pricing}'
                        WHERE ItemName = '{n}' """
         cursor.execute(command1)
         conn.commit()

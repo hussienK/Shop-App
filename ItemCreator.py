@@ -18,7 +18,7 @@ def Create_table():
     #create the table
     cursor.execute(""" CREATE TABLE IF NOT EXISTS
     items
-    (id INTEGER PRIMARY KEY AUTOINCREMENT, ItemName TEXT NOT NULL , Price TEXT NOT NULL, PurchasePrice TEXT, UnitsLeft TEXT, Pricing TEXT)""")
+    (id TEXT, ItemName TEXT NOT NULL , Price TEXT NOT NULL, PurchasePrice TEXT, UnitsLeft TEXT, Pricing TEXT)""")
     #End connection
     cursor.close()
 
@@ -34,6 +34,7 @@ class AddItems(QMainWindow):
         #define my Widgets
         self.name_input = self.findChild(QLineEdit, "Name_lineEdit")
         self.price_input = self.findChild(QLineEdit, "Price_lineEdit")
+        self.id_input = self.findChild(QLineEdit, "ID_lineEdit")
         self.create_button  = self.findChild(QPushButton, "Create_Button")
         self.data_table = self.findChild(QTableWidget, "item_table_widget")
         self.delete_button = self.findChild(QPushButton, "delete_item_button")
@@ -57,6 +58,9 @@ class AddItems(QMainWindow):
             #Get User Input
             n = self.name_input.text()
             p = self.price_input.text().replace(',','')
+            i = self.id_input.text()
+            if i == "":
+                i = "0"
             p = int(p)
             #Make More Readable
             p = str(format(p, ',d'))
@@ -65,13 +69,14 @@ class AddItems(QMainWindow):
         except:
             self.name_input.setText("")
             self.price_input.setText("")
+            self.id_input.seText("")
             self.warning = ErrorUI("Please Enter A Valid Input", "Ok")
             return
 
         #Update ussr input
         if(self.ItemExists(n)):
             command1 = f"""UPDATE items
-                           SET price = '{p}'
+                           SET Price = '{p}', id = '{i}'
                            WHERE ItemName = '{n}' """
             cursor.execute(command1)
             conn.commit()
@@ -80,7 +85,7 @@ class AddItems(QMainWindow):
         #Create new user input
         else:
             #make the commands
-            command1 = f"INSERT INTO items ( ItemName, Price) VALUES('{n}','{p}')"
+            command1 = f"INSERT INTO items (id, ItemName, Price) VALUES('{i}','{n}','{p}')"
             command2 = "SELECT * from items"
             cursor.execute(command1)
             cursor.execute(command2)
@@ -152,6 +157,7 @@ class AddItems(QMainWindow):
         new_price = self.selected[2]
         new_price = new_price.replace(',','')
         self.price_input.setText(new_price)
+        self.id_input.setText(self.selected[0])
         #end collection
         cursor.close()
 

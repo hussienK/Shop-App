@@ -7,37 +7,43 @@
     <x>0</x>
     <y>0</y>
     <width>467</width>
-    <height>256</height>
+    <height>275</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>467</width>
-    <height>256</height>
+    <height>275</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>467</width>
-    <height>256</height>
+    <height>282</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="maximumSize">
+    <size>
+     <width>467</width>
+     <height>16777215</height>
+    </size>
+   </property>
    <layout class="QFormLayout" name="formLayout">
     <property name="leftMargin">
-     <number>12</number>
+     <number>15</number>
     </property>
     <property name="topMargin">
-     <number>12</number>
+     <number>15</number>
     </property>
     <property name="rightMargin">
-     <number>12</number>
+     <number>15</number>
     </property>
     <property name="bottomMargin">
-     <number>12</number>
+     <number>15</number>
     </property>
     <item row="0" column="0">
      <widget class="QLabel" name="label">
@@ -58,31 +64,26 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label_2">
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Sale Price</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="label_3">
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>units Left</string>
-      </property>
-     </widget>
-    </item>
     <item row="1" column="0">
+     <widget class="QLabel" name="label_1">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>ID</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="ID_lineEdit">
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
      <widget class="QLabel" name="label_6">
       <property name="font">
        <font>
@@ -94,19 +95,40 @@
       </property>
      </widget>
     </item>
-    <item row="7" column="0">
-     <widget class="QLabel" name="label_7">
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="pPrice_lineEdit"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_2">
       <property name="font">
        <font>
         <pointsize>10</pointsize>
        </font>
       </property>
       <property name="text">
-       <string>Total Value</string>
+       <string>Sale Price</string>
       </property>
      </widget>
     </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="sPrice_lineEdit"/>
+    </item>
     <item row="4" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>units Left</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="UnitsLeft_lineEdit"/>
+    </item>
+    <item row="5" column="0">
      <widget class="QLabel" name="label_5">
       <property name="font">
        <font>
@@ -118,23 +140,7 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="pPrice_lineEdit"/>
-    </item>
-    <item row="2" column="1">
-     <widget class="QLineEdit" name="sPrice_lineEdit"/>
-    </item>
-    <item row="3" column="1">
-     <widget class="QLineEdit" name="UnitsLeft_lineEdit"/>
-    </item>
-    <item row="7" column="1">
-     <widget class="QLabel" name="TotalValue">
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="1">
+    <item row="5" column="1">
      <widget class="QComboBox" name="PricingSelector">
       <item>
        <property name="text">
@@ -148,20 +154,7 @@
       </item>
      </widget>
     </item>
-    <item row="10" column="0" colspan="2">
-     <widget class="QPushButton" name="SaveButton">
-      <property name="minimumSize">
-       <size>
-        <width>50</width>
-        <height>30</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>Save</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0">
+    <item row="6" column="0">
      <widget class="QLabel" name="label_8">
       <property name="font">
        <font>
@@ -173,14 +166,14 @@
       </property>
      </widget>
     </item>
-    <item row="5" column="1">
+    <item row="6" column="1">
      <widget class="QLabel" name="profit_per_item">
       <property name="text">
        <string>TextLabel</string>
       </property>
      </widget>
     </item>
-    <item row="6" column="0">
+    <item row="7" column="0">
      <widget class="QLabel" name="label_4">
       <property name="font">
        <font>
@@ -192,10 +185,42 @@
       </property>
      </widget>
     </item>
-    <item row="6" column="1">
+    <item row="7" column="1">
      <widget class="QLabel" name="TotalProfit">
       <property name="text">
        <string>TextLabel</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="label_7">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Total Value</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QLabel" name="TotalValue">
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0">
+     <widget class="QPushButton" name="SaveButton">
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Save</string>
       </property>
      </widget>
     </item>
